@@ -86,6 +86,13 @@ function _init()
 				})
 	 end
 		
+	end
+	snake.die=function(self)
+		for part in all(self.body) do
+			if snake.x == part.x and snake.y == part.y then
+				_init()
+			end
+		end
 	end	
 end
 
@@ -113,12 +120,15 @@ end
 
 function _draw()
 	cls(1)
+
+	print(#snake.body,1,1,7)
 	
 	for apple in all(apples) do
 		apple:draw()
 	end
 	
 	snake:draw()
+	snake:die()
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
